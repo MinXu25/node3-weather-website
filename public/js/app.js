@@ -21,13 +21,13 @@ weatherForm.addEventListener('submit', (e) => {
         response.json().then(data => {
 
             const { name, region, country } = data.result.location;
-            const { temperature } = data.result.current
+            const { temperature, feelslike } = data.result.current
 
             if (data.error) {
                 messageOne.textContent = data.error;
             } else {
                 messageOne.textContent = `${name}, ${region}, ${country}`;
-                messageTwo.textContent = `The current temperature in ${name} is ${temperature}°C`;
+                messageTwo.textContent = `The current temperature in ${name} is ${temperature}°C but feels like ${feelslike}°C`;
             }
         });
     });
